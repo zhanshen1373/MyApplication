@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <declare-styleable name="MyView">
+        <attr name="xx" format="integer" />
+        <attr name="tt" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="www">
+        <attr name="qaz" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="ProgressBarView">
+        <attr name="ringColor" format="color"/>
+        <attr name="ringProgressColor" format="color"/>
+        <attr name="ringWidth" format="dimension"/>
+        <attr name="max" format="integer"/>
+    </declare-styleable>
+
+
+</resources>

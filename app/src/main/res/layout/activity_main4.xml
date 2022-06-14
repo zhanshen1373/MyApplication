@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.panpass.myapplication.ZdyView android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <View
+        android:id="@+id/xx"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@color/black"
+        />
+
+    <TextView
+        android:id="@+id/ttt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"/>
+
+
+
+<!--textview和view不一样-->
+<!--        <View-->
+<!--            android:id="@+id/TTbean"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_toRightOf="@id/xx"-->
+<!--            android:background="@android:color/holo_red_dark"/>-->
+
+
+</com.panpass.myapplication.ZdyView>

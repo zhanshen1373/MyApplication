@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fillViewport="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="-50dp"
+        tools:context=".MainActivity">
+
+        <!--    <ImageView-->
+        <!--        android:layout_width="100dp"-->
+        <!--        android:layout_height="100dp"-->
+        <!--        android:background="@color/black"-->
+        <!--        android:contentDescription="TODO" />-->
+
+        <ImageView
+            android:id="@+id/iiii"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_launcher"
+            android:contentDescription="TODO" />
+
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:text="hhhhh"
+            android:background="@android:color/holo_blue_dark"
+            android:layout_toRightOf="@id/iiii"
+            android:layout_marginLeft="20dp"/>
+
+        <!--    <com.panpass.myapplication.ZdyView-->
+        <!--        android:layout_width="60dp"-->
+        <!--        android:layout_height="60dp"-->
+        <!--        android:layout_alignParentBottom="true"-->
+        <!--        />-->
+        <TextView
+            android:id="@+id/point"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="3333333" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_below="@id/point"
+            android:text="55555555" />
+
+        <LinearLayout
+            android:id="@+id/linear"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal" />
+
+
+
+        <EditText
+            android:id="@+id/edit"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/linear"
+            android:maxLength="10"
+            android:hint="请输入"/>
+
+
+    </RelativeLayout>
+
+
+</ScrollView>

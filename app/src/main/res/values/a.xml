@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="a">
+        <item name="android:textSize">10sp</item>
+    </style>
+    <declare-styleable name="wsx">
+        <attr name="ccc" format="integer"/>
+    </declare-styleable>
+
+</resources>
