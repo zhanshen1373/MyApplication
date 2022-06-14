@@ -5,8 +5,11 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.Group;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -14,8 +17,16 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 public class MainActivity6 extends AppCompatActivity {
 
+    @BindView(R.id.role_verify_results_group)
+    Group group;
+    @BindView(R.id.role_verify_results_tv2)
+    TextView tv2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +34,7 @@ public class MainActivity6 extends AppCompatActivity {
 //        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
 //        fragmentTransaction.add(R.id.ConstraintLayout,new BlankFragment());
 //        fragmentTransaction.commit();
+        ButterKnife.bind(this);
         getSupportFragmentManager().findFragmentById(R.id.blankfragment);
         PackageManager packageManager = getPackageManager();
         ApplicationInfo applicationInfo;
@@ -34,6 +46,7 @@ public class MainActivity6 extends AppCompatActivity {
         }
         Log.e("www","oncreate--activity");
         TransportBean transportBean = (TransportBean) getIntent().getSerializableExtra("trans");
+        if (transportBean!=null)
         Log.e("www", "这里是传输的name" + transportBean.getName());
         Log.e("www", "这里是静态的name" + TransportBean.getInstance().getName());
         File file = new File(getCacheDir(),"b.txt");
@@ -52,6 +65,21 @@ public class MainActivity6 extends AppCompatActivity {
         }
 
 
+    }
+    @OnClick(R.id.b)
+    void xx(){
+        group.setVisibility(View.VISIBLE);
+        tv2.setVisibility(View.VISIBLE);
+    }
+    @OnClick(R.id.a)
+    void t() {
+        group.setVisibility(View.GONE);
+        tv2.setVisibility(View.GONE);
+    }
+    @OnClick(R.id.c)
+    void p() {
+        group.setVisibility(View.VISIBLE);
+        tv2.setVisibility(View.GONE);
     }
 
     @Override

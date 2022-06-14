@@ -1,28 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
-    >
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
         android:id="@+id/tvv"
-        android:layout_width="0dp"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:gravity="center"
         android:text="11"
-        android:background="#ff0000"
+
         android:paddingTop="10dp"
         android:paddingRight="20dp"
         android:paddingLeft="20dp"
         android:paddingBottom="10dp"
+        tools:text="nnnnnnn"
+
         />
+<!--    <com.panpass.myapplication.ZdyView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:TTbean="778"-->
+<!--        app:xx="2"/>-->
+
+
 
   <TextView
-      android:layout_width="0dp"
+      android:layout_width="80dp"
       android:layout_height="wrap_content"
-      android:layout_weight="1"
       android:text="2222"/>
 
 </LinearLayout>

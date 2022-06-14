@@ -5,9 +5,45 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/ll"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
+        android:text="1111111"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tv1_name"
+        />
 
+    <TextView
+        android:id="@+id/tv1_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="1111111_name"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ll"
+        app:layout_constraintEnd_toStartOf="@id/tv2"
+        />
+
+    <TextView
+        android:id="@+id/tv2"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:text="2222222"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv1_name"
+        app:layout_constraintEnd_toStartOf="@id/tv2_name"
+        />
+
+    <TextView
+        android:id="@+id/tv2_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="2222222_name"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
