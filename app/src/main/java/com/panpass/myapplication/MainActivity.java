@@ -662,12 +662,32 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
-            pictureAidlInterface = PictureAidlInterface.Stub.asInterface(service);
-            try {
-                pictureAidlInterface.setPicture(bitmap);
-            } catch (RemoteException e) {
-                e.printStackTrace();
+
+
+            //发送数据给服务端进程
+            Parcel data = Parcel.obtain();
+            Parcel replay = Parcel.obtain();
+            if (service != null) {
+                try {
+                    data.writeString("hello");
+                    //发送数据到服务端进程
+                    service.transact(1, data, replay, 0);
+                    replay.readException();
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                } finally {
+                    replay.recycle();
+                    data.recycle();
+                }
             }
+
+
+//            pictureAidlInterface = PictureAidlInterface.Stub.asInterface(service);
+//            try {
+//                pictureAidlInterface.setPicture(bitmap);
+//            } catch (RemoteException e) {
+//                e.printStackTrace();
+//            }
         }
 
         @Override

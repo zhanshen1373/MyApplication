@@ -51,7 +51,7 @@ public class MyService extends Service {
     public IBinder onBind(Intent intent) {
         // TODO: Return the communication channel to the service.
         Log.e("www","--onBind--");
-        return new PictureBinder();
+        return new ppp();
     }
 
     class MyBinder extends IMyAidlInterface.Stub{
@@ -88,6 +88,25 @@ public class MyService extends Service {
         @Override
         public Bitmap getPicture(Bitmap bitmap) throws RemoteException {
             return null;
+        }
+    }
+
+    class ppp extends Binder {
+        public ppp() {
+        }
+        @Override
+        protected boolean onTransact(int code, @NonNull Parcel data, @Nullable Parcel reply, int flags) throws RemoteException {
+
+            switch (code) {
+                case 1:
+                    String message = data.readString();
+                    Log.e("www", "showMessage " + message);
+                    if (reply != null) {
+                        reply.writeNoException();
+                    }
+                    return true;
+            }
+            return super.onTransact(code, data, reply, flags);
         }
     }
 
