@@ -22,9 +22,16 @@ val Easy.name:String get() {
 }
 class wsx{
     var q:String?=null
+    set(value) = if (value===null) field = "a" else field =null
     get() {
         return field?:"null"
     }
+}
+data class Wx(var a: String, var b: Int =1) : Serializable {
+    var x:String = a
+    get() {
+       return if (a == null) "q" else "-"}
+    var qqq = 2
 }
 
 

@@ -13,11 +13,6 @@ import butterknife.OnClick
 import butterknife.Unbinder
 import com.jcodecraeer.xrecyclerview.XRecyclerView
 import java.util.*
-import kotlin.coroutines.Continuation
-import kotlin.coroutines.CoroutineContext
-import kotlin.coroutines.EmptyCoroutineContext
-import kotlin.coroutines.createCoroutine
-import kotlin.math.log
 
 class KotlinActivity : AppCompatActivity() {
 
@@ -43,33 +38,47 @@ class KotlinActivity : AppCompatActivity() {
         xRecyclerView.adapter
         initData()
         initAdapter()
-statusInformationList.add(xxx!!)
-        Log.e("www",statusInformationList.size.toString())
+
+        Log.e("www", Wx("qqq").b.toString()+"..."+Wx("qqq").qqq)
+//        statusInformationList.add(xxx!!)
+        for (index in statusInformationList?.indices!!) {
+
+        }
+        Log.e("www", statusInformationList.size.toString())
         for (bean in statusInformationList) {
-            Log.e("www","tttt");
+            Log.e("www", "tttt");
         }
         statusInformationList.forEach {
-            Log.e("www","xxxxxx");
+            Log.e("www", "xxxxxx");
         }
 
+        when{
+            2>1->Log.e("www", "zzzzzzz");
+        }
 
     }
 
     private fun initAdapter() {
         val tt = arrayListOf<String>()
-        with(tt, { add("a")})
-        tt?.takeIf { 2>1 }?.let { Log.e("www","ijjk") }
-        tt?.apply { add("b") }?.let { for (item in it) Log.e("www",item) }
+        with(tt, { add("a") })
+        tt?.takeIf { 2>1 }?.let { Log.e("www", "ijjk") }
+        tt?.apply { add("b") }?.let { for (item in it) Log.e("www", item) }
 
     }
 
     private fun initData() {
-        var qqq :Easy.Q = Easy("0","0",null).Q(1)
-        var easy = Easy("0","0",qqq)
-        Log.e("www",easy.toString())
-        easy.setData(null,"8")
-        Log.e("www",easy.toString())
-        Log.e("www",easy.name)
+        var ijk = Wx("a")
+        var qqq :Easy.Q = Easy("0", "0", null).Q(1)
+        var easy = Easy("0", "0", qqq)
+        Log.e("www", easy.toString())
+        easy.setData(null, "8")
+        Log.e("www", easy.toString())
+        Log.e("www", easy.name)
+        var www = wsx()
+        var t = www.q
+        Log.e("www", t + ",,,,")
+        www.q = null
+        Log.e("www", www.q + ",,,,")
     }
 
     @OnClick(R.id.xrecyclerview, R.id.titlebar)

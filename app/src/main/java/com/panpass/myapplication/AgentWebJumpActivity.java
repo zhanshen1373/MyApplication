@@ -1,22 +1,20 @@
 package com.panpass.myapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-import androidx.databinding.Observable;
-import androidx.databinding.ViewDataBinding;
-
 import android.content.Intent;
 import android.net.Uri;
-import android.net.http.SslError;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
-import android.webkit.SslErrorHandler;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ImageView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.BindingAdapter;
+import androidx.databinding.DataBindingUtil;
 
 import com.panpass.myapplication.databinding.ActivityAgentWebJumpBinding;
 
@@ -31,6 +29,8 @@ public class AgentWebJumpActivity extends AppCompatActivity {
         tTbean = new TTbean("nnnnn", "qqqqq", 2);
         activityAgentWebJumpBinding = DataBindingUtil.setContentView(this, R.layout.activity_agent_web_jump);
         activityAgentWebJumpBinding.setTTbean(tTbean);
+        activityAgentWebJumpBinding.setAgentwebjumpactivity(this);
+        activityAgentWebJumpBinding.setA("你好");
 //        activityAgentWebJumpBinding.getTTbean().addOnPropertyChangedCallback(new Observable.OnPropertyChangedCallback() {
 //            @Override
 //            public void onPropertyChanged(Observable sender, int propertyId) {
@@ -88,5 +88,19 @@ public class AgentWebJumpActivity extends AppCompatActivity {
 
     }
 
+    public void click(View view) {
+        Log.e("www","触发了点击事件");
+    }
+    public void click(){     Log.e("www","触发了点击事件...");}
+    public void click(View view,String name){
+        Log.e("www","hhhhh");
+    }
+    public void click(String name) {
+        Log.e("www",name);
+    }
 
+    @BindingAdapter("src")
+    public static void loadPic(ImageView iv,String url) {
+        Log.e("www",url);
+    }
 }

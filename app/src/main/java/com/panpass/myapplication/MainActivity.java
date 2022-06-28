@@ -2,6 +2,7 @@ package com.panpass.myapplication;
 
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -9,6 +10,7 @@ import android.content.ServiceConnection;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
@@ -20,8 +22,11 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -30,14 +35,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.panpass.myapplication.activity.RecyclerViewActivity;
-import com.panpass.myapplication.bean.PictureAndContentBean;
 import com.panpass.myapplication.bean.RecyclerViewUseBean;
-
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -46,8 +46,6 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -143,8 +141,26 @@ public class MainActivity extends AppCompatActivity {
         double aaa = 1999999512;
         Log.e("www",aaa+"---");
 
+        Wx wsx = new Gson().fromJson("{\"a\":\"1\"}", Wx.class);
+        Log.e("www",wsx.getX());
+        Log.e("www",wsx.getQqq()+"...");
+        Log.e("www",new Wx("bb",1).getQqq()+"...");
 
 
+        View inflate = LayoutInflater.from(this).inflate(R.layout.mm, null);
+        Dialog dialog = new Dialog(this, R.style.Theme_AppCompat);
+        Window window = dialog.getWindow();
+        window.getDecorView().setPadding(0, 0, 0, 0);
+        window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        WindowManager.LayoutParams lp = window.getAttributes();
+        lp.dimAmount = 0.7f;
+        lp.gravity = Gravity.CENTER;
+        window.setAttributes(lp);
+        dialog.addContentView(inflate,new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        dialog.setCancelable(true);
+        dialog.setCanceledOnTouchOutside(true);
+        dialog.show();
         edit = findViewById(R.id.edit);
         edit.addTextChangedListener(new TextWatcher() {
             @Override
@@ -314,25 +330,41 @@ public class MainActivity extends AppCompatActivity {
         */
 
 
-//        OkHttpClient okHttpClient = new OkHttpClient();
-//        Request request = new Request.Builder().
-//                url("https://image.baidu.com/search/detail?ct=503316480&z=0&ipn=d&word=%E5%AD%99%E4%B8%80%E5%AE%81&hs=0&pn=5&spn=0&di=188430&pi=0&rn=1&tn=baiduimagedetail&is=0%2C0&ie=utf-8&oe=utf-8&cl=2&lm=-1&cs=398057975%2C1483705804&os=3360541148%2C902768142&simid=398057975%2C1483705804&adpicid=0&lpn=0&ln=30&fr=ala&fm=&sme=&cg=&bdtype=0&oriquery=%E5%AD%99%E4%B8%80%E5%AE%81&objurl=https%3A%2F%2Fgimg2.baidu.com%2Fimage_search%2Fsrc%3Dhttp%3A%2F%2Fnimg.ws.126.net%2F%3Furl%3Dhttp%3A%2F%2Fdingyue.ws.126.net%2F2021%2F0624%2Ff0f39723j00qv7dfu0055c000pb0190c.jpg%26thumbnail%3D650x2147483647%26quality%3D80%26type%3Djpg%26refer%3Dhttp%3A%2F%2Fnimg.ws.126.net%26app%3D2002%26size%3Df9999%2C10000%26q%3Da80%26n%3D0%26g%3D0n%26fmt%3Djpeg%3Fsec%3D1644835116%26t%3Df0634693abca66a1021ec7349bca01bb&fromurl=ippr_z2C%24qAzdH3FAzdH3F1y_z%26e3B8mn_z%26e3Bv54AzdH3Fw6ptvsjAzdH3FGDlFFDRRac9b88WY_z%26e3Bip4s&gsm=6&islist=&querylist=&dyTabStr=MCwzLDQsNSwxLDcsNiwyLDgsOQ%3D%3D").
-//                get().
-//                build();
-//
-//        Call call = okHttpClient.newCall(request);
-//        call.enqueue(new Callback() {
-//            @Override
-//            public void onFailure(Call call, IOException e) {
-//                Log.e("www",e.toString());
-//            }
-//
-//            @Override
-//            public void onResponse(Call call, Response response) throws IOException {
-//                Log.e("www",response.toString());
-//            }
-//        });
+       /*
+        OkHttpClient okHttpClient = new OkHttpClient().newBuilder()
+                .addInterceptor(new Interceptor() {
+                    @Override
+                    public Response intercept(Chain chain) throws IOException {
+                        Log.e("www","interceptor");
+                        return  chain.proceed(chain.request());
+                    }
+                })
+                .addNetworkInterceptor(new Interceptor() {
+                    @Override
+                    public Response intercept(Chain chain) throws IOException {
+                        Log.e("www","networkinterceptor");
+                        return chain.proceed(chain.request());
+                    }
+                }).build();
+        Request request = new Request.Builder().
+                url("https://image.baidu.com/search/detail?ct=503316480&z=0&ipn=d&word=%E5%AD%99%E4%B8%80%E5%AE%81&hs=0&pn=5&spn=0&di=188430&pi=0&rn=1&tn=baiduimagedetail&is=0%2C0&ie=utf-8&oe=utf-8&cl=2&lm=-1&cs=398057975%2C1483705804&os=3360541148%2C902768142&simid=398057975%2C1483705804&adpicid=0&lpn=0&ln=30&fr=ala&fm=&sme=&cg=&bdtype=0&oriquery=%E5%AD%99%E4%B8%80%E5%AE%81&objurl=https%3A%2F%2Fgimg2.baidu.com%2Fimage_search%2Fsrc%3Dhttp%3A%2F%2Fnimg.ws.126.net%2F%3Furl%3Dhttp%3A%2F%2Fdingyue.ws.126.net%2F2021%2F0624%2Ff0f39723j00qv7dfu0055c000pb0190c.jpg%26thumbnail%3D650x2147483647%26quality%3D80%26type%3Djpg%26refer%3Dhttp%3A%2F%2Fnimg.ws.126.net%26app%3D2002%26size%3Df9999%2C10000%26q%3Da80%26n%3D0%26g%3D0n%26fmt%3Djpeg%3Fsec%3D1644835116%26t%3Df0634693abca66a1021ec7349bca01bb&fromurl=ippr_z2C%24qAzdH3FAzdH3F1y_z%26e3B8mn_z%26e3Bv54AzdH3Fw6ptvsjAzdH3FGDlFFDRRac9b88WY_z%26e3Bip4s&gsm=6&islist=&querylist=&dyTabStr=MCwzLDQsNSwxLDcsNiwyLDgsOQ%3D%3D").
+                get().
+                build();
 
+        Call call = okHttpClient.newCall(request);
+
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e("www",e.toString());
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                Log.e("www",response.toString());
+            }
+        });
+    */
 
 //        SharedPreferences a = getSharedPreferences("a", MODE_PRIVATE);
 //        SharedPreferences.Editor edit = a.edit();

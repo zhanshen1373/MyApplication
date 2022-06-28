@@ -9,6 +9,12 @@
         <variable
             name="TTbean"
             type="com.panpass.myapplication.TTbean" />
+        <variable
+            name="agentwebjumpactivity"
+            type="com.panpass.myapplication.AgentWebJumpActivity" />
+        <variable
+            name="a"
+            type="String" />
 
     </data>
 
@@ -31,7 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{`位置:`+TTbean.ww+`\n年龄`+TTbean.old}"
-            android:onClick="@{TTbean::tvClick}"
+            android:onClick="@{agentwebjumpactivity::click}"
             android:padding="10dp"
             app:layout_constraintTop_toBottomOf="@id/webview"
             app:layout_constraintLeft_toLeftOf="parent"/>
@@ -52,6 +58,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/et"
+            ccc:src="@{a}"
             />
 <!--        ccc:src="@{TTbean.imageUrl}"-->
     </androidx.constraintlayout.widget.ConstraintLayout>
